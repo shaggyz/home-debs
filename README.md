@@ -2,6 +2,10 @@
 
 The software that I use in Debian, prepared in meta-packages.
 
+## Usage
+
+You can download the packages directly from the [latest release](https://github.com/shaggyz/home-debs/releases/latest) and install them with `dpkg`.
+
 ## Packages content:
 
 ### shaggyz-base
@@ -32,3 +36,7 @@ Pentesting / Security, reversing, networking, etc.
 - gobuster
 - dirb
 - wfuzz
+
+## Links
+
+- [Github action for release assets](https://github.com/actions/upload-release-asset)
