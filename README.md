@@ -36,7 +36,3 @@ You can download the packages directly from the [latest release](https://github.
 - wfuzz
 
 > Pentesting / Security, reversing, networking, etc.
-
-## Links
-
-- [Github action for release assets](https://github.com/actions/upload-release-asset)
