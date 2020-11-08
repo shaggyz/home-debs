@@ -33,8 +33,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./shaggyz-base_${{ github.ref }}_all.deb
-          asset_name: shaggyz-base_${{ github.ref }}_all.deb
+          asset_path: ./shaggyz-base_${{ github.event.release.tag_name }}_all.deb
+          asset_name: shaggyz-base_${{ github.event.release.tag_name }}_all.deb
           asset_content_type: application/vnd.debian.binary-package
       - name: Upload Development Asset
         id: upload-development-asset 
@@ -43,8 +43,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./shaggyz-development_${{ github.ref }}_all.deb
-          asset_name: shaggyz-development_${{ github.ref }}_all.deb
+          asset_path: ./shaggyz-development_${{ github.event.release.tag_name }}_all.deb
+          asset_name: shaggyz-development_${{ github.event.release.tag_name }}_all.deb
           asset_content_type: application/vnd.debian.binary-package
       - name: Upload Pentesting Asset
         id: upload-pentesting-asset 
@@ -53,6 +53,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./shaggyz-pentesting_${{ github.ref }}_all.deb
-          asset_name: shaggyz-pentesting_${{ github.ref }}_all.deb
+          asset_path: ./shaggyz-pentesting_${{ github.event.release.tag_name }}_all.deb
+          asset_name: shaggyz-pentesting_${{ github.event.release.tag_name }}_all.deb
           asset_content_type: application/vnd.debian.binary-package
