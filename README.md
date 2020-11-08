@@ -10,25 +10,23 @@ You can download the packages directly from the [latest release](https://github.
 
 ### shaggyz-base
 
-General system tools and utilities.
-
 - vim
 - sudo
 - htop
 - curl
 - wget
 
-### shaggyz-development
+> General system tools and utilities.
 
-Development tools.
+### shaggyz-development
 
 - build-essential
 - universal-ctags
 - git
 
-### shaggyz-pentesting
+> Development tools.
 
-Pentesting / Security, reversing, networking, etc.
+### shaggyz-pentesting
 
 - forensics-all
 - forensics-extra
@@ -36,6 +34,8 @@ Pentesting / Security, reversing, networking, etc.
 - gobuster
 - dirb
 - wfuzz
+
+> Pentesting / Security, reversing, networking, etc.
 
 ## Links
 
