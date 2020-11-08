@@ -13,6 +13,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Get tag
+        id: tag
+        uses: dawidd6/action-get-tag@v1
       - name: Build project
         run: |
           make provisioning && make build && ls -la
@@ -33,8 +36,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./shaggyz-base_${{ github.event.release.tag_name }}_all.deb
-          asset_name: shaggyz-base_${{ github.event.release.tag_name }}_all.deb
+          asset_path: ./shaggyz-base_${{ steps.tag.outputs.tag }}_all.deb
+          asset_name: shaggyz-base_${{ steps.tag.outputs.tag }}_all.deb
           asset_content_type: application/vnd.debian.binary-package
       - name: Upload Development Asset
         id: upload-development-asset 
@@ -43,8 +46,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./shaggyz-development_${{ github.event.release.tag_name }}_all.deb
-          asset_name: shaggyz-development_${{ github.event.release.tag_name }}_all.deb
+          asset_path: ./shaggyz-development_${{ steps.tag.outputs.tag }}_all.deb
+          asset_name: shaggyz-development_${{ steps.tag.outputs.tag }}_all.deb
           asset_content_type: application/vnd.debian.binary-package
       - name: Upload Pentesting Asset
         id: upload-pentesting-asset 
@@ -53,6 +56,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./shaggyz-pentesting_${{ github.event.release.tag_name }}_all.deb
-          asset_name: shaggyz-pentesting_${{ github.event.release.tag_name }}_all.deb
+          asset_path: ./shaggyz-pentesting_${{ steps.tag.outputs.tag }}_all.deb
+          asset_name: shaggyz-pentesting_${{ steps.tag.outputs.tag }}_all.deb
           asset_content_type: application/vnd.debian.binary-package
