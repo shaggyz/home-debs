@@ -16,3 +16,43 @@ jobs:
       - name: Build project
         run: |
           make provisioning && make build && ls -la
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+      - name: Upload Base Asset
+        id: upload-base-asset 
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./shaggyz-base_${{ github.ref }}_all.deb
+          asset_name: shaggyz-base_${{ github.ref }}_all.deb
+          asset_content_type: application/vnd.debian.binary-package
+      - name: Upload Development Asset
+        id: upload-development-asset 
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./shaggyz-development_${{ github.ref }}_all.deb
+          asset_name: shaggyz-development_${{ github.ref }}_all.deb
+          asset_content_type: application/vnd.debian.binary-package
+      - name: Upload Pentesting Asset
+        id: upload-pentesting-asset 
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./shaggyz-pentesting_${{ github.ref }}_all.deb
+          asset_name: shaggyz-pentesting_${{ github.ref }}_all.deb
+          asset_content_type: application/vnd.debian.binary-package

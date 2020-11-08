@@ -20,8 +20,12 @@ freeze: ## Render the configuration files with the current version
 provisioning: ## Installs the needed tools to create the packages in your system
 	sudo apt install equivs
 
-release: ## Releases a new version to github
-	@echo "TBD"
+release: build ## Releases a new version to github
+	git add .
+	git commit
+	git push 
+	git tag $(VERSION)
+	git push --tags
 
 clear: ## Removes all the DEB packages
 	rm -f *.deb
