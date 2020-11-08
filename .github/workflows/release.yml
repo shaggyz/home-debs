@@ -9,10 +9,10 @@ name: Upload Release Asset
 jobs:
   build:
     name: Upload Release Asset
-    runs-on: ubuntu-latest
+    runs-on: debian-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Build project
         run: |
-          make install && make build
+          make provisioning && make build && ls -la
