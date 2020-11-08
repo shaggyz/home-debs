@@ -12,9 +12,9 @@ build: freeze ## Builds the packages
 
 freeze: ## Render the configuration files with the current version
 	@echo "Applying version $(VERSION)... "
-	@sed -e s/^Version:.*/"Version: ${VERSION}"/g shaggyz-base
-	@sed -e s/^Version:.*/"Version: ${VERSION}"/g shaggyz-development
-	@sed -e s/^Version:.*/"Version: ${VERSION}"/g shaggyz-pentesting
+	@sed -i s/^Version:.*/"Version: ${VERSION}"/g shaggyz-base
+	@sed -i s/^Version:.*/"Version: ${VERSION}"/g shaggyz-development
+	@sed -i s/^Version:.*/"Version: ${VERSION}"/g shaggyz-pentesting
 	@echo "Done"
 
 provisioning: ## Installs the needed tools to create the packages in your system

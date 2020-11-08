@@ -7,7 +7,7 @@ Homepage: https://github.com/shaggyz/home-debs
 Standards-Version: 3.9.2
 
 Package: shaggyz-development
-Version: 1.0.0
+Version: 1.0.1
 Maintainer: Nicolas Palumbo <n@xinax.net>
 # Pre-Depends: <comma-separated list of packages>
 Depends: build-essential, universal-ctags, git
